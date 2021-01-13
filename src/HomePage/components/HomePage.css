@@ -1,0 +1,21 @@
+.gameBox{
+    border: 1px solid black;
+    padding:10px;
+}
+.gameTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.gameDetails{
+    display: flex;
+    flex-direction: row;
+}
+.gameImage{
+    display: flex;
+    flex:1;
+}
+.gameDescription{
+    display: flex;
+    flex: 4;
+}
