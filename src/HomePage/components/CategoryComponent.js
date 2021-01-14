@@ -1,43 +1,34 @@
 import { useEffect, useState, useRef } from "react";
+import { useDispatch , useSelector} from 'react-redux';
+
 import "./CategoryComponent.css";
-const URL = "https://api.dev.cloud.barbooksaustralia.com/code-challenge/";
+
 const fetchCategories = async () => {
     let GEN_URL = `/code-challenge/api/categories`;
     try {
         const response = await fetch(GEN_URL);
         const data = await response.json()
-        console.log("data for cats");
+        
 
         return data
     } catch (error) {
         console.log(error);
     }
 }
-const updateSelectedCategories = (selectedCategories, setSelectedCategories, category,type,setCategory) => {
-    if(type==="add"){
-        if (selectedCategories.indexOf(category) == -1) {
-            let list = [...selectedCategories, category]
-            setSelectedCategories(list)
-            setCategory(list)
-        }
-    }else{
-        let list = selectedCategories.filter((selectedCategory)=>selectedCategory!=category);
-        setSelectedCategories(list);
-        setCategory(list);
-    }
-    
-}
-const CategoryDropdown = ({setCategory}) => {
+const CategoryDropdown = () => {
+
+
+    const selectedCategories = useSelector(state=>state.filters.categories);
 
 
     const myRef = useRef();
 
     const [categorySearchText, setCategorySearchText] = useState("");
-    const [categories, setCategories] = useState([]);
-    const [selectedCategories, setSelectedCategories] = useState([]);
     const [showCategories, setShowCategories] = useState(false);
+    const [categories, setCategories] = useState([]);
 
 
+    const dispatch = useDispatch();
     const handleClickOutside = e => {
         if (!myRef.current.contains(e.target)) {
             setShowCategories(false);
@@ -47,7 +38,7 @@ const CategoryDropdown = ({setCategory}) => {
     useEffect(() => {
         const fetchData = async () => {
             const data = await fetchCategories();
-            console.log(data);
+            
             if (data && data.length) {
                 setCategories(data);
 
@@ -65,11 +56,11 @@ const CategoryDropdown = ({setCategory}) => {
                 <div>
                     <ul>
                         {
-                            selectedCategories.map(selectedCategory => {
-                                return <li className="selectedCategoryItem">
+                            selectedCategories.map(category => {
+                                return <li className="selectedCategoryItem" key={category}>
                                     <div className="selectedCategoryItemContainer">
-                                        <div>{selectedCategory}</div>
-                                        <span className="closeButton" onClick={(e) => {e.stopPropagation(); updateSelectedCategories(selectedCategories, setSelectedCategories, selectedCategory, "remove",setCategory)}}>X</span>
+                                        <div>{category}</div>
+                                        <span className="closeButton" onClick={(e) => {e.stopPropagation(); dispatch({type:"REMOVE_CATEGORY",payload:{category}})}}>X</span>
                                     </div>
                                 </li>
                             })
@@ -82,7 +73,7 @@ const CategoryDropdown = ({setCategory}) => {
                 {showCategories ? <div className="categoryListContainer" >
                     {categories.map(category => {
                         return (category.toLowerCase().includes(categorySearchText.toLowerCase()) &&
-                            <div onClick={() => updateSelectedCategories(selectedCategories, setSelectedCategories, category, "add",setCategory)} key={category}>{category}</div>)
+                            <div onClick={() => dispatch({type:"ADD_CATEGORY",payload:{category}})} key={category}>{category}</div>)
                     })}
                 </div> : null}
             </div>
