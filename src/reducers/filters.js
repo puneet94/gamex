@@ -23,7 +23,7 @@ const filters = (state = INITIAL_STATE, action) => {
 		case REMOVE_CATEGORY:
 			return {
 				...state,
-				categories: state.categories.filter((category) => action.payload.category != category)
+				categories: state.categories.filter((category) => action.payload.category !== category)
 			}
 		case UPDATE_TITLE:
 			return{

@@ -8,12 +8,12 @@ import {
 } from "react-router-dom";
 import deepFreeze from "deep-freeze";
 
-import thunk from "redux-thunk";
+//import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
 
 import HomePageComponent from "./HomePage/components/HomePageComponent";
 import DetailsPageComponent from "./DetailsPage/components/DetailsPageComponent";
-import { createStore, applyMiddleware } from 'redux';
+import { createStore } from 'redux';
 
 const store = deepFreeze(createStore(
   rootReducer
