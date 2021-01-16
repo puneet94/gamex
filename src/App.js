@@ -8,16 +8,21 @@ import {
 } from "react-router-dom";
 import deepFreeze from "deep-freeze";
 
-//import thunk from "redux-thunk";
+import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
 
 import HomePageComponent from "./home";
 import DetailsPageComponent from "./DetailsPage/components/DetailsPageComponent";
-import { createStore } from 'redux';
+import { createStore ,applyMiddleware} from 'redux';
+import {fetchCategories, fetchGames} from "./home/actions/gamesData";
 
-const store = deepFreeze(createStore(
-  rootReducer
-));
+const store = applyMiddleware(thunk)(createStore)(rootReducer);
+
+
+deepFreeze(store);
+
+store.dispatch(fetchCategories());
+store.dispatch(fetchGames());
 function App() {
   return (
     <div className="App">

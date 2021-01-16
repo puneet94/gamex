@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
-const SortyByView = ({sort_by,sortByChange,sortByList})=>{
+const SortyByView = ({sort_by,updateSortBy,sortByList})=>{
     return (
         <div>
             <select
             data-test="selectSortByComponent"
                 value={sort_by}
                 onChange={e => {
-                   sortByChange(e.target.value)
+                   updateSortBy(e.target.value)
                 }}
                 className="" >
                 {
@@ -21,7 +21,7 @@ const SortyByView = ({sort_by,sortByChange,sortByList})=>{
 
 SortyByView.propTypes = {
     sort_by: PropTypes.string,
-    sortByChange: PropTypes.func,
+    updateSortBy: PropTypes.func,
     sortByList: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string,
         label: PropTypes.string

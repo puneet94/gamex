@@ -3,14 +3,14 @@
 import PropTypes from 'prop-types';
 import "./styles.css";
 
-const PlatformView = ({onPlatformChange,platform,platformList})=>{
+const PlatformView = ({updatePlatform,platform,platformList})=>{
     return (
         <div>
         <select
             value={platform}
             data-test="selectPlatformComponent"
             onChange={e => {
-                onPlatformChange(e.target.value)
+                updatePlatform(e.target.value)
             }}
             className="" >
             {
@@ -25,7 +25,7 @@ const PlatformView = ({onPlatformChange,platform,platformList})=>{
 
 PlatformView.propTypes = {
     platform: PropTypes.string,
-    onPlatformChange: PropTypes.func,
+    updatePlatform: PropTypes.func,
     platformList: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string,
         label: PropTypes.string

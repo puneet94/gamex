@@ -15,7 +15,7 @@ describe('SortByViewComponent Component', () => {
             const expectedProps = 
             {
                 sort_by: "release-date",
-                sortByChange: ()=>{},
+                updateSortBy: ()=>{},
                 sortByList: [{
                     name: "alphabetical",
                     label: "Alphabetical"
@@ -35,7 +35,7 @@ describe('SortByViewComponent Component', () => {
             const props = 
             {
                 sort_by: "relevance",
-                sortByChange: mockFunc,
+                updateSortBy: mockFunc,
                 sortByList: [{ label: "--None--", name: "" }, { label: "Release Date", name: "release-date" },
                 { label: "Alphabetical", name: "alphabetical" }, {
                     label: "Relevance", name: "relevance"

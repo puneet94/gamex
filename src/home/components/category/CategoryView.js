@@ -43,6 +43,7 @@ const CategoryView = ({ selectedCategories,categories,removeCategory,addCategory
                 </div>
             </div>
             <div>
+                
                 {showCategories ? <div className="categoryListContainer" >
                     {categories.map(category => {
                         return (category.toLowerCase().includes(categorySearchText.toLowerCase()) &&

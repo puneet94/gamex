@@ -15,7 +15,7 @@ describe('PlatformView Component', () => {
             const expectedProps = 
             {
                 platform: "browser",
-                onPlatformChange: ()=>{},
+                updatePlatform: ()=>{},
                 platformList: [{
                     name: "browser",
                     label: "Browser"
@@ -36,7 +36,7 @@ describe('PlatformView Component', () => {
             const props = 
             {
                 platform: "browser",
-                onPlatformChange: mockFunc,
+                updatePlatform: mockFunc,
                  platformList :[{ label: "All", name: "" }, { label: "PC", name: "pc" },
                 { label: "Browser", name: "browser" }]
             }

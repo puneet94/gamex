@@ -7,6 +7,10 @@ export const UPDATE_PLATFORM = "UPDATE_PLATFORM";
 
 export const UPDATE_SORT_BY = "UPDATE_SORT_BY";
 
+export const GET_CATEGORY = "GET_CATEGORY";
+export const GET_GAMES = "GET_GAMES";
+
+
 
 
 

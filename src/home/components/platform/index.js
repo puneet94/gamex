@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
+import { updatePlatform } from "../../actions/filters";
 import PlatformView from "./PlatformView";
 
 const PlatformComponent = () => {
@@ -12,7 +13,7 @@ const PlatformComponent = () => {
         <PlatformView 
         platformList={platformList}
         platform={platform}
-        onPlatformChange = {(value)=>dispatch({ type: "UPDATE_PLATFORM", payload: { platform: value } })}
+        updatePlatform = {(platform)=>dispatch(updatePlatform(platform))}
         />
     );
 }

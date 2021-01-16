@@ -13,8 +13,6 @@ const TitleSearchComponent = () => {
     )
 }
 
-
-
 export default TitleSearchComponent;
 
 

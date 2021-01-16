@@ -1,5 +1,5 @@
 import {
-	ADD_CATEGORY,REMOVE_CATEGORY,UPDATE_TITLE,UPDATE_PLATFORM,UPDATE_SORT_BY
+	ADD_CATEGORY, REMOVE_CATEGORY, UPDATE_TITLE, UPDATE_PLATFORM, UPDATE_SORT_BY
 } from "../../types";
 const INITIAL_STATE = {
 	categories: [],
@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 const filters = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case ADD_CATEGORY:
-			if(state.categories.indexOf(action.payload.category)!==-1){
+			if (state.categories.indexOf(action.payload.category) !== -1) {
 				return state
 			}
 			return {
@@ -25,20 +25,20 @@ const filters = (state = INITIAL_STATE, action) => {
 				categories: state.categories.filter((category) => action.payload.category !== category)
 			}
 		case UPDATE_TITLE:
-			return{
+			return {
 				...state,
 				title: action.payload.title
 			}
 		case UPDATE_PLATFORM:
-				return{
-					...state,
-					platform: action.payload.platform
-				}
-				case UPDATE_SORT_BY:
-					return{
-						...state,
-						sort_by: action.payload.sort_by
-					}
+			return {
+				...state,
+				platform: action.payload.platform
+			}
+		case UPDATE_SORT_BY:
+			return {
+				...state,
+				sort_by: action.payload.sort_by
+			}
 		default:
 			return state;
 	}

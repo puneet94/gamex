@@ -1,5 +1,6 @@
 
 import { useSelector, useDispatch } from "react-redux";
+import { updateSortBy } from "../../actions/filters";
 
 import SortByView from "./SortByView";
 
@@ -11,7 +12,8 @@ const SortByContainer = () => {
     }];
     const dispatch = useDispatch();
     return (
-        <SortByView sort_by={sort_by} sortByList={sortByList} sortByChange={(value)=> dispatch({ type: "UPDATE_SORT_BY", payload: { sort_by: value } })}/>
+        <SortByView sort_by={sort_by} sortByList={sortByList} 
+        updateSortBy={(sort_by)=> dispatch(updateSortBy(sort_by))}/>
     );
 }
 

@@ -6,11 +6,12 @@ const TitleSearchView = ({titleUpdate, title})=>{
             <input type="text" value={title} onChange={(e) => {
                 titleUpdate(e.target.value)
             }}
+
+            data-test="titleSearchComponent"
             />
         </div>
     );
 }
-
 
 TitleSearchView.propTypes = {
     title: PropTypes.string,
