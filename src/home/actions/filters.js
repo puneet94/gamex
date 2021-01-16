@@ -1,4 +1,4 @@
-import { ADMIN_LOGIN,ADMIN_LOGOUT ,GET_ORDERS,SET_ORDERS_TYPE,UPDATE_ORDER_TYPE} from "../types";
+import { ADMIN_LOGIN,ADMIN_LOGOUT ,GET_ORDERS,SET_ORDERS_TYPE,UPDATE_ORDER_TYPE} from "../../types";
 import adminApi from "../api/admin";
 
 export const adminLogin = (credentials)=>{

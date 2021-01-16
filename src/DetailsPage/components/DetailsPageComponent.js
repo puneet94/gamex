@@ -7,11 +7,8 @@ import {
 const DetailsPageComponent = () => {
     let history = useHistory()
 
-    
     const [gameDetails, setGameDetails] = useState({});
-
 	const location = useLocation();
-
     useEffect(() => {
 		const query = new URLSearchParams(location.search);
         const fetchData = async () => {
@@ -29,8 +26,6 @@ const DetailsPageComponent = () => {
     return (
         <div>
             {"Details Page"}
-
-
 
             <div>
                 <div className="gameDetails">

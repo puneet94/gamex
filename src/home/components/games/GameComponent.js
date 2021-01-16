@@ -1,7 +1,7 @@
 import {
     Link
 } from "react-router-dom";
-import "./HomePage.css";
+import "./styles.css";
 
 const URL = "https://api.dev.cloud.barbooksaustralia.com/code-challenge/";
 

@@ -2,7 +2,7 @@
 
 
 import { useEffect, useState } from "react";
-import "./HomePage.css";
+import "./styles.css";
 
 import { useSelector } from "react-redux";
 import GameComponent from "./GameComponent";
@@ -26,9 +26,7 @@ const fetchGames = async (queryObject) => {
     console.log(`${GEN_URL}${QUERY_PARAMS}`);
     const response = await fetch(`${GEN_URL}${QUERY_PARAMS}`);
     const data = await response.json()
-
     return data
-
 }
 
 
@@ -62,7 +60,15 @@ const GamesList = ()=>{
                 queryObject['sort-by'] = sort_by;
             }
             const data = await fetchGames(queryObject);
-            setGamesList(data);
+
+            console.log("the dta is here");
+            console.log(data);
+            if('status' in data){
+                setGamesList([]);
+            }else{
+                setGamesList(data);
+            }
+            
         }
         fetchData();
 
@@ -71,7 +77,9 @@ const GamesList = ()=>{
 
     return (
         
-        gamesList.length && gamesList.map((game) => <GameComponent key={game.id} game={game} gameTitleSearch={title}/>)
+        gamesList.length &&
+        gamesList.map((game) => <GameComponent key={game.id} game={game} gameTitleSearch={title}/>
+        )
     )
 }
 

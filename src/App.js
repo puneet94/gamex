@@ -11,7 +11,7 @@ import deepFreeze from "deep-freeze";
 //import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
 
-import HomePageComponent from "./HomePage/components/HomePageComponent";
+import HomePageComponent from "./home";
 import DetailsPageComponent from "./DetailsPage/components/DetailsPageComponent";
 import { createStore } from 'redux';
 

@@ -1,0 +1,35 @@
+
+
+import PropTypes from 'prop-types';
+import "./styles.css";
+
+const PlatformView = ({onPlatformChange,platform,platformList})=>{
+    return (
+        <div>
+        <select
+            value={platform}
+            data-test="selectPlatformComponent"
+            onChange={e => {
+                onPlatformChange(e.target.value)
+            }}
+            className="" >
+            {
+                platformList.map((platformObject) => <option value={platformObject.name} 
+                key={platformObject.name}>{platformObject.label}</option>)
+            }
+        </select >
+    </div>
+    )
+}
+
+
+PlatformView.propTypes = {
+    platform: PropTypes.string,
+    onPlatformChange: PropTypes.func,
+    platformList: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string,
+        label: PropTypes.string
+    }))
+}
+
+export default PlatformView

@@ -1,34 +1,12 @@
+import PropTypes from 'prop-types';
+import "./styles.css";
 import { useEffect, useState, useRef } from "react";
-import { useDispatch , useSelector} from 'react-redux';
-
-import "./CategoryComponent.css";
-
-const fetchCategories = async () => {
-    let GEN_URL = `/code-challenge/api/categories`;
-    try {
-        const response = await fetch(GEN_URL);
-        const data = await response.json()
-        
-
-        return data
-    } catch (error) {
-        console.log(error);
-    }
-}
-const CategoryDropdown = () => {
-
-
-    const selectedCategories = useSelector(state=>state.filters.categories);
-
+const CategoryView = ({ selectedCategories,categories,removeCategory,addCategory}) => {
 
     const myRef = useRef();
 
     const [categorySearchText, setCategorySearchText] = useState("");
     const [showCategories, setShowCategories] = useState(false);
-    const [categories, setCategories] = useState([]);
-
-
-    const dispatch = useDispatch();
     const handleClickOutside = e => {
         if (!myRef.current.contains(e.target)) {
             setShowCategories(false);
@@ -36,20 +14,10 @@ const CategoryDropdown = () => {
     };
 
     useEffect(() => {
-        const fetchData = async () => {
-            const data = await fetchCategories();
-            
-            if (data && data.length) {
-                setCategories(data);
-
-            }
-        }
-        fetchData();
-    }, []);
-    useEffect(() => {
         document.addEventListener("mousedown", handleClickOutside);
         return () => document.removeEventListener("mousedown", handleClickOutside);
     });
+
     return (
         <div onClick={() => setShowCategories(true)} className="categoryContainer" ref={myRef}>
             <div>
@@ -60,7 +28,12 @@ const CategoryDropdown = () => {
                                 return <li className="selectedCategoryItem" key={category}>
                                     <div className="selectedCategoryItemContainer">
                                         <div>{category}</div>
-                                        <span className="closeButton" onClick={(e) => {e.stopPropagation(); dispatch({type:"REMOVE_CATEGORY",payload:{category}})}}>X</span>
+                                        <span className="closeButton"
+                                            onClick={(e) => {
+                                                e.stopPropagation(); 
+                                                removeCategory(category)
+                                            }}>
+                                            X</span>
                                     </div>
                                 </li>
                             })
@@ -73,14 +46,25 @@ const CategoryDropdown = () => {
                 {showCategories ? <div className="categoryListContainer" >
                     {categories.map(category => {
                         return (category.toLowerCase().includes(categorySearchText.toLowerCase()) &&
-                            <div onClick={() => dispatch({type:"ADD_CATEGORY",payload:{category}})} key={category}>{category}</div>)
+                            <div
+                                onClick={() => addCategory(category)
+                                }
+                                key={category}>{category}</div>
+                        )
                     })}
                 </div> : null}
             </div>
 
 
-        </div>
-    );
+        </div>)
 }
 
-export default CategoryDropdown;
+
+CategoryView.propTypes = {
+    selectedCategories:PropTypes.arrayOf(PropTypes.string),
+    categories: PropTypes.arrayOf(PropTypes.string),
+    removeCategory: PropTypes.func,
+    addCategory: PropTypes.func
+}
+
+export default CategoryView;

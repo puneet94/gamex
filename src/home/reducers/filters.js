@@ -1,6 +1,6 @@
 import {
 	ADD_CATEGORY,REMOVE_CATEGORY,UPDATE_TITLE,UPDATE_PLATFORM,UPDATE_SORT_BY
-} from "../types.js";
+} from "../../types";
 const INITIAL_STATE = {
 	categories: [],
 	title: "",
@@ -8,7 +8,6 @@ const INITIAL_STATE = {
 	sort_by: ""
 
 };
-
 
 const filters = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
