@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-
+import "./styles.css";
 const TitleSearchView = ({titleUpdate, title})=>{
     return (
-        <div>
+        <div className="titleSearchContainer">
             <input type="text" value={title} onChange={(e) => {
                 titleUpdate(e.target.value)
             }}
-
+            placeholder="Search By Name"
             data-test="titleSearchComponent"
             />
         </div>

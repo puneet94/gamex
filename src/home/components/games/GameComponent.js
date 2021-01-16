@@ -11,16 +11,29 @@ const GameComponent = ({game, gameTitleSearch})=>{
     return (
         game.title.toLowerCase().includes(gameTitleSearch.toLowerCase()) ? <div className="gameBox" key={game.id}>
             <div className="gameTitle">
-                {game.title}
+                <h3>{game.title}</h3>
             </div>
             <div className="gameDetails">
                 <div className="gameImage">
-                    <img alt="someimage" src={`${URL}${game.thumbnail}`} />
+                    <img className="gameImageTag" alt="someimage" src={`${URL}${game.thumbnail}`} />
                 </div>
                 <div className="gameDescription">
-                    {game.shortDescription}
+                    <div>
+                        <div className="gameDescriptionText">
+                        {game.shortDescription}
+                        </div>
+                        <div className="gameAttributes">
+                        <ul>
+                            <li>{game.platform}</li>
+                            <li>{game.publisher}</li>
+                            <li>{game.genre}</li>
+                        </ul>
+                        </div>
+                        
+                    </div>
+                    <Link to={"/details?id=" + game.id}>{"View More"}</Link>
                 </div>
-                <Link to={"/details?id=" + game.id}>{"View More"}</Link>
+                
             </div>
         </div> : null)
 

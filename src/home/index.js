@@ -7,11 +7,21 @@ import GamesListComponent from "./components/games/GamesListComponent";
 function HomePageComponent() {
     return (
         <div>
-            <CategoryComponent />
-            <TitleSearchComponent />
-            <SortByComponent />
-            <PlatformComponent />
-            <GamesListComponent/>
+            <div>
+                <TitleSearchComponent />
+
+            </div>
+            <div style={{display:"flex",flexDirection:"row"}}>
+            <div style={{flex:1}}><PlatformComponent /></div>
+            <div style={{flex:2}}>
+            <CategoryComponent style={{flex:2}}/></div>
+            <div style={{flex:1}}><SortByComponent />
+</div>
+            </div>
+            
+
+
+            <GamesListComponent />
         </div>
     )
 }

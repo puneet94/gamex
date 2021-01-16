@@ -12,10 +12,14 @@ const GamesList = ()=>{
     const gamesList = useSelector(state=>state.gamesData.games);
 
     return (
+        <div style={{display:"flex",flexWrap:"wrap"}}>
+            {
+                gamesList.length &&
+                gamesList.map((game) => <GameComponent key={game.id} game={game} gameTitleSearch={title}/>
+                )
+            }
+        </div>
         
-        gamesList.length &&
-        gamesList.map((game) => <GameComponent key={game.id} game={game} gameTitleSearch={title}/>
-        )
     )
 }
 

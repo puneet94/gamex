@@ -5,7 +5,9 @@ import "./styles.css";
 
 const PlatformView = ({updatePlatform,platform,platformList})=>{
     return (
-        <div>
+        <div className="platformContainer">
+            
+            <div>Filter By Platform</div>
         <select
             value={platform}
             data-test="selectPlatformComponent"

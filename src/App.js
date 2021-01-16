@@ -26,8 +26,9 @@ store.dispatch(fetchGames());
 function App() {
   return (
     <div className="App">
-      Find & track the best free-to-play games! Search for what to play next!
-      <Provider store={store}>
+      <h2>Find &amp; track the best free-to-play games! </h2><h4>Search for what to play next!
+      </h4><Provider store={store}>
+        
         <Router>
           <div>
 

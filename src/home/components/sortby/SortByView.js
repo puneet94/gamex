@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-
+import "./styles.css";
 const SortyByView = ({sort_by,updateSortBy,sortByList})=>{
     return (
-        <div>
+        <div className="sortByContainer">
+            <div>Sort By</div>
             <select
             data-test="selectSortByComponent"
                 value={sort_by}
