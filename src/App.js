@@ -12,7 +12,7 @@ import thunk from "redux-thunk";
 import rootReducer from "./rootReducer";
 
 import HomePageComponent from "./home";
-import DetailsPageComponent from "./DetailsPage/components/DetailsPageComponent";
+import DetailsPageComponent from "./details";
 import { createStore ,applyMiddleware} from 'redux';
 import {fetchCategories, fetchGames} from "./home/actions/gamesData";
 
