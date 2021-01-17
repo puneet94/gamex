@@ -1,57 +1,66 @@
 # Folder structure
 The folder structure commonly used in create react app is following
-
-src
---Components
---- CategoryComponent
-----index.css
-----index.js
-----spec.js
----GameComponent
-----index.css
-----index.js
-----spec.js
---Actions
----categoryActions.js
----gameActions.js
---Reducers
----categoryReducer.js
----gameReducer.js
+src/
+	actions/
+		CommandActions.js
+		UserActions.js
+	components/
+		Header.js
+		Sidebar.js
+		Command.js
+		User.js
+		UserProfile.js
+		UserAvatar.js
+	containers/
+		App.js
+		Command.js
+		User.js
+	reducers/
+		index.js
+		command.js
+		user.js
+	routes.js
 
 But in this folder structure, the components directory becomes huge and all the components are present in one folder. This structure becomes difficult to maintain when multiple teams are working simultaneously on many components as they have to touch same folders everytime
 
 The folder structure I have used is called domain separated folder structure where in each team can work on one domain and it will have its own separate folder. Each domain is like a small react app in itself. This is scalable when both the app and the teams increase in size
 
-src
---details.      (this folder contains all the components, actions, reducers, tests related to game details page)
-	---index.js.    ( all the components related to details page are combined here and this is the file exported to the react router)
+src/
+	details/     (it contains all the components, actions, reducers, tests for game details page)
+		
+		components/
+		actions/
+		reducers/
+		index.js.    ( all the components related to details page are combined here and this is the file exported to the react router)
+		
+	home/ (this folder contains all the components, actions, reducers tests related to home page)
+		
+		index.js.       (all the components related to home page are combined here and this is the file exported to the react router)
+		
+		components/
 
---home (this folder contains all the components, actions, reducers tests related to home page)
-	---index.js.       (all the components related to home page are combined here and this is the file exported to the react router)
----components
+			category/
+				styles.css
+				index.js.   //this is the container component where redux hooks are used
+				CategoryView.js.   //this is the presentation component which is depenednt only 	on props passed to it. Easy for mocking and unit testing
+				CategoryView.test.js.     //unit tests for presentation component
 
-	----category
-	-----styles.css
-	-----index.js.   //this is the container component where redux hooks are used
-	-----CategoryView.js.   //this is the presentation component which is depenednt only on props passed to it. Easy for mocking and unit testing
-	-----CategoryView.test.js.     //unit tests for presentation component
-
-	----platform
-	-----styles.css
-	-----index.js.   //this is the container component where redux hooks are used
-	-----PlatformView.js.   //this is the presentation component which is depenednt only on props passed to it. Easy for mocking and unit testing
-	-----PlatformView.test.js.     //unit tests for presentation component
+			platform/
+				styles.css
+				index.js.   //this is the container component where redux hooks are used
+				PlatformView.js.   //this is the presentation component which is depenednt only 	on props passed to it. Easy for mocking and unit testing
+				PlatformView.test.js.     //unit tests for presentation component
 
 
----actions
-	----filters.js
-	----gameData.js
+		actions/
+			filters.js
+			gameData.js
 
----reducers
-	----filters.js
-	----filters.test.js.            //Unit tests for filters reducer
-	----gamesData.js
-	----gamesData.test.js.   //Unit tests for gamesdata reducer
+		reducers/
+			filters.js
+			filters.test.js.            //Unit tests for filters reducer
+			gamesData.js
+			gamesData.test.js.   //Unit tests for gamesdata reducer
 
 
 
