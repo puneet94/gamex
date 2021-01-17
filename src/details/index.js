@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
+/*
+
+ * This is the file exported to the router
+ * Redux hasnt been used because the details are not static
+ * It displays two components GameDetails and GameScreenshots which are dependent only on props. This helps in mocking and unit testing
+*/
+
 import {
 
     useLocation, useHistory
 } from "react-router-dom";
-import "./styles.css"
+import GameScreenshots from "./components/games/GameScreenshots";
+import GameDetails from "./components/games/GameDetails";
 const DetailsPageComponent = () => {
     let history = useHistory()
 
@@ -15,7 +23,7 @@ const DetailsPageComponent = () => {
             try {
                 const response = await fetch(`code-challenge/api/game?id=${query.get("id")}`);
                 const data = await response.json();
-                console.log(data);
+                
                 setGameDetails(data);
             } catch (error) {
                 console.log(error);
@@ -23,55 +31,16 @@ const DetailsPageComponent = () => {
         }
         fetchData();
     }, [location]);
-
+    const goBack = ()=>{
+        history.goBack();
+    }
     return (
         <div>
 
 
             <div>
-                <div className="gamePageDetails">
-                    <div className="gamePageImage">
-                        {gameDetails.thumbnail && <img src={`code-challenge${gameDetails.thumbnail}`} alt="" />}
-                    </div>
-                    <div className="gamePageContents">
-                        <div className="gamePageAttributes">
-                            <div className="gamePageRequirements">
-                                <h4>Requirements</h4>
-                                {gameDetails.minimumSystemRequirements ?
-                                    <div> <div className="gameTags">OS</div>
-                                        <div className="gameTagsDetails">{gameDetails.minimumSystemRequirements.os}</div>
-                                        <div className="gameTags">Processor</div>
-                                        <div className="gameTagsDetails">{gameDetails.minimumSystemRequirements.processor}</div>
-                                        <div className="gameTags">Memory</div>
-                                        <div className="gameTagsDetails">{gameDetails.minimumSystemRequirements.memory}</div>
-                                        <div className="gameTags">Graphics</div>
-                                        <div className="gameTagsDetails">{gameDetails.minimumSystemRequirements.graphics}</div>
-                                        <div className="gameTags">Storage</div>
-                                        <div className="gameTagsDetails">{gameDetails.minimumSystemRequirements.storage}</div>
-
-                                    </div> : null
-                                }
-
-                            </div>
-                            <div className="gamePageDescription">
-                                <h4>{gameDetails.title}</h4>
-                                {gameDetails.shortDescription}
-
-
-                            </div>
-                        </div>
-                        <button onClick={() => history.goBack()}>Back</button>
-                    </div>
-                </div>
-                <div className="gamePageScreenshots" >
-                    {gameDetails.screenshots && gameDetails.screenshots.map((screenshot) => {
-                        return (
-                            <div key={screenshot.id} className="gamePageScreenshotContainer">
-                                <img src={`code-challenge${screenshot.image}`} alt="" />
-                            </div>
-                        )
-                    })}
-                </div>
+                <GameDetails gameDetails={gameDetails} goBack={goBack}/>
+                <GameScreenshots screenshots = {gameDetails.screenshots}/>
             </div>
         </div>
     );

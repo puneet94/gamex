@@ -64,15 +64,21 @@ src/
 			gameData.js
 
 		reducers/
-		
+
 			filters.js
 			filters.test.js.            //Unit tests for filters reducer
 			gamesData.js
 			gamesData.test.js.   //Unit tests for gamesdata reducer
 
 
+# Improvements(or TODO)
 
-
+* Replacing SCSS with css
+* Implementing image carousel for games details page
+* Elaborating comments
+* Writing integration tests 
+* Improving the design for catgeory filters
+* Improving the overall design of home page
 
 # Getting Started with Create React App
 

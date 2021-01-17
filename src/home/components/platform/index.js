@@ -1,3 +1,6 @@
+
+/*Container component for platform view */
+
 import { useSelector, useDispatch } from "react-redux";
 import { updatePlatform } from "../../actions/filters";
 import PlatformView from "./PlatformView";

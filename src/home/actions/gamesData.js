@@ -1,3 +1,7 @@
+/*
+    * Action creator for prefetching categories
+    * Action creator for getting games 
+*/
 import { fetchCategoriesAPI,fetchGamesAPI } from '../../apis/gamesData';
 import { GET_CATEGORY, GET_GAMES } from '../../types';
 

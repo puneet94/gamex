@@ -14,9 +14,9 @@ const GamesList = ()=>{
     return (
         <div style={{display:"flex",flexWrap:"wrap"}}>
             {
-                gamesList.length &&
+                gamesList.length ?
                 gamesList.map((game) => <GameComponent key={game.id} game={game} gameTitleSearch={title}/>
-                )
+                ):null
             }
         </div>
         

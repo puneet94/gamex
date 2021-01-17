@@ -1,3 +1,5 @@
+/*Presentation component for platform view */
+
 import PropTypes from 'prop-types';
 import "./styles.css";
 const TitleSearchView = ({titleUpdate, title})=>{

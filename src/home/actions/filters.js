@@ -1,3 +1,8 @@
+/*
+    *Action creators for filters
+    *every time a filter is changed, one more action is dispatched tp fecth details from backend
+*/
+
 import { ADD_CATEGORY, REMOVE_CATEGORY, UPDATE_PLATFORM, UPDATE_SORT_BY} from "../../types";
 
 import {fetchGames} from "./gamesData";

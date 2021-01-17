@@ -1,3 +1,5 @@
+/*Presentation component for category view */
+
 import PropTypes from 'prop-types';
 import "./styles.css";
 import { useEffect, useState, useRef } from "react";
@@ -8,11 +10,16 @@ const CategoryView = ({ selectedCategories, categories, removeCategory, addCateg
     const [cursor, setCursor] = useState(0);
     const [categorySearchText, setCategorySearchText] = useState("");
     const [showCategories, setShowCategories] = useState(false);
+
+    //Whenever user clicks outside of the category view component, the category list is hidden
+    //My ref is checked for event target. IF the click target is inside the category component, then the category list is not hideen
     const handleClickOutside = e => {
         if (!myRef.current.contains(e.target)) {
             setShowCategories(false);
         }
     };
+
+    //Arrows have been implemented for selecting the category but enter button and scroll is not done
     const handleKeyDown = (e) => {
         if (e.keyCode === 38 && cursor > 0) {
             setCursor(cursor - 1);

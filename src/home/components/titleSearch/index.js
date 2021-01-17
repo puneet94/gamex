@@ -1,3 +1,4 @@
+/*Container component for titlesearch view */
 
 import { useSelector, useDispatch } from "react-redux";
 import TitleSearchView from "./TitleSearchView";

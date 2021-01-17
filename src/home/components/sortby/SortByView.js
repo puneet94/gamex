@@ -1,3 +1,6 @@
+
+/*Presentation component for sortyby view */
+
 import PropTypes from 'prop-types';
 import "./styles.css";
 const SortyByView = ({sort_by,updateSortBy,sortByList})=>{

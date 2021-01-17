@@ -1,4 +1,6 @@
 
+/*Container component for sortby view */
+
 import { useSelector, useDispatch } from "react-redux";
 import { updateSortBy } from "../../actions/filters";
 

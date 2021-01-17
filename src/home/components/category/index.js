@@ -1,3 +1,5 @@
+/*Container component for catgeory view */
+
 import { useDispatch, useSelector } from 'react-redux';
 import CategoryView from "./CategoryView";
 import {addCategory, removeCategory} from "../../actions/filters";
