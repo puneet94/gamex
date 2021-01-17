@@ -80,6 +80,13 @@ src/
 * Improving the design for catgeory filters
 * Improving the overall design of home page
 
+# Libraries used
+
+* Enzyme, Jest for testing
+* React router for navigation
+* Redux for state management
+* Prop types for checking props
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
