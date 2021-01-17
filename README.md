@@ -1,21 +1,24 @@
 # Folder structure
 The folder structure commonly used in create react app is following
+
 src/
+
 	actions/
+
 		CommandActions.js
 		UserActions.js
 	components/
+
 		Header.js
 		Sidebar.js
-		Command.js
-		User.js
-		UserProfile.js
-		UserAvatar.js
+
 	containers/
+
 		App.js
 		Command.js
 		User.js
 	reducers/
+
 		index.js
 		command.js
 		user.js
@@ -32,7 +35,7 @@ src/
 		actions/
 		reducers/
 		index.js.    ( all the components related to details page are combined here and this is the file exported to the react router)
-		
+
 	home/ (this folder contains all the components, actions, reducers tests related to home page)
 		
 		index.js.       (all the components related to home page are combined here and this is the file exported to the react router)
