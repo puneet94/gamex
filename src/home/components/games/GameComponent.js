@@ -2,6 +2,7 @@ import {
     Link
 } from "react-router-dom";
 import "./styles.css";
+import PropTypes from 'prop-types';
 
 const URL = "https://api.dev.cloud.barbooksaustralia.com/code-challenge/";
 
@@ -15,7 +16,7 @@ const GameComponent = ({game, gameTitleSearch})=>{
             </div>
             <div className="gameDetails">
                 <div className="gameImage">
-                    <img className="gameImageTag" alt="someimage" src={`${URL}${game.thumbnail}`} />
+                    <img className="gameImageTag" data-test="gameImageTag" alt="someimage" src={`${URL}${game.thumbnail}`} />
                 </div>
                 <div className="gameDescription">
                     <div>
@@ -31,7 +32,7 @@ const GameComponent = ({game, gameTitleSearch})=>{
                         </div>
                         
                     </div>
-                    <Link to={"/details?id=" + game.id}>{"View More"}</Link>
+                    <Link data-test="gameLink" to={"/details?id=" + game.id}>{"View More"}</Link>
                 </div>
                 
             </div>
@@ -40,4 +41,17 @@ const GameComponent = ({game, gameTitleSearch})=>{
     
 }
 
+GameComponent.propTypes = {
+    gameTitleSearch: PropTypes.string,
+    
+    game: PropTypes.shape({
+        platform: PropTypes.string,
+        publisher: PropTypes.string,
+        genre: PropTypes.string,
+        id: PropTypes.number,
+        shortDescription: PropTypes.string,
+        thumbnail: PropTypes.string,
+        title: PropTypes.string
+    })
+}
 export default GameComponent;
