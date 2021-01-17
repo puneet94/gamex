@@ -28,7 +28,9 @@ But in this folder structure, the components directory becomes huge and all the 
 
 The folder structure I have used is called domain separated folder structure where in each team can work on one domain and it will have its own separate folder. Each domain is like a small react app in itself. This is scalable when both the app and the teams increase in size
 
+
 src/
+
 	details/     (it contains all the components, actions, reducers, tests for game details page)
 		
 		components/
@@ -49,6 +51,7 @@ src/
 				CategoryView.test.js.     //unit tests for presentation component
 
 			platform/
+
 				styles.css
 				index.js.   //this is the container component where redux hooks are used
 				PlatformView.js.   //this is the presentation component which is depenednt only 	on props passed to it. Easy for mocking and unit testing
@@ -56,10 +59,12 @@ src/
 
 
 		actions/
+
 			filters.js
 			gameData.js
 
 		reducers/
+		
 			filters.js
 			filters.test.js.            //Unit tests for filters reducer
 			gamesData.js
